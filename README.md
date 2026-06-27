@@ -89,14 +89,20 @@ cd Fake_Job_Posting_Detection
 
 1. Open **Google Colab**.
 2. Upload `fake_job_prediction_by_ml_model.ipynb`.
-3. Upload `fake_job_postings.csv`.
-4. Install the required packages (if needed):
+3. Upload `fake_job_postings.csv` to the **Files** panel.
+4. If `pd.read_csv("fake_job_postings.csv")` doesn't work, right-click the uploaded CSV in the **Files** panel, select **Copy path**, and use that path in `pd.read_csv()`. For example:
+
+```python
+df = pd.read_csv("/content/fake_job_postings.csv")
+```
+
+5. Install the required packages (if needed):
 
 ```bash
 !pip install pandas matplotlib scikit-learn
 ```
 
-5. Run all notebook cells from top to bottom.
+6. Run all notebook cells from top to bottom.
 
 ---
 
