@@ -6,20 +6,22 @@ A Machine Learning and Natural Language Processing (NLP) project that detects wh
 
 ## 📑 Table of Contents
 
-- [📌 Project Overview](#-project-overview)
-- [✨ Features](#-features)
-- [📂 Dataset](#-dataset)
-- [🛠️ Technologies Used](#️-technologies-used)
-- [🚀 Installation](#-installation)
-- [🔄 Workflow](#-workflow)
-- [🤖 Machine Learning Models](#-machine-learning-models)
-- [📈 Evaluation Metrics](#-evaluation-metrics)
-- [📁 Project Structure](#-project-structure)
-- [✅ Results](#-results)
-- [🚀 Future Improvements](#-future-improvements)
-- [⚠️ Limitations](#️-limitations)
-- [📄 License](#-license)
-- [👨‍💻 Author](#-author)
+* [📌 Project Overview](#-project-overview)
+* [✨ Features](#-features)
+* [📂 Dataset](#-dataset)
+* [🛠️ Technologies Used](#️-technologies-used)
+* [🚀 Installation](#-installation)
+* [🌐 Streamlit Web Application](#-streamlit-web-application)
+* [🖼️ Application Screenshots](#️-application-screenshots)
+* [🔄 Workflow](#-workflow)
+* [🤖 Machine Learning Models](#-machine-learning-models)
+* [📈 Evaluation Metrics](#-evaluation-metrics)
+* [📁 Project Structure](#-project-structure)
+* [✅ Results](#-results)
+* [🚀 Future Improvements](#-future-improvements)
+* [⚠️ Limitations](#️-limitations)
+* [📄 License](#-license)
+* [👨‍💻 Author](#-author)
 
 ---
 
@@ -27,7 +29,7 @@ A Machine Learning and Natural Language Processing (NLP) project that detects wh
 
 Online job portals contain both genuine and fraudulent job postings. This project applies Natural Language Processing (NLP) and Machine Learning techniques to automatically classify job postings as **Legitimate** or **Fraudulent**.
 
-The project includes data preprocessing, feature engineering, TF-IDF vectorization, model comparison, hyperparameter tuning, and a prediction system for unseen job postings.
+The project includes data preprocessing, feature engineering, TF-IDF vectorization, model comparison, hyperparameter tuning, model serialization, and a Streamlit-based prediction system for unseen job postings.
 
 ---
 
@@ -40,7 +42,9 @@ The project includes data preprocessing, feature engineering, TF-IDF vectorizati
 * Multiple Machine Learning Models
 * Hyperparameter Tuning
 * Confusion Matrix
-* Prediction System
+* Model Serialization using Pickle
+* Streamlit Web Application
+* Real-time Prediction System
 
 ---
 
@@ -48,14 +52,14 @@ The project includes data preprocessing, feature engineering, TF-IDF vectorizati
 
 **Dataset:** Fake Job Postings Dataset
 
-**Target Variable**
+### Target Variable
 
 | Value | Meaning        |
-| ----: | -------------- |
-|     0 | Legitimate Job |
-|     1 | Fraudulent Job |
+| ----- | -------------- |
+| 0     | Legitimate Job |
+| 1     | Fraudulent Job |
 
-**Main Features**
+### Main Features
 
 * Title
 * Company Profile
@@ -71,6 +75,8 @@ The project includes data preprocessing, feature engineering, TF-IDF vectorizati
 * Pandas
 * Matplotlib
 * Scikit-learn
+* Streamlit
+* Pickle
 
 ---
 
@@ -108,13 +114,13 @@ df = pd.read_csv("/content/fake_job_postings.csv")
 
 ## Option 2: Conda + VS Code + Jupyter Notebook
 
-### Step 1: Create a Conda Environment
+### Step 1: Create Environment
 
 ```bash
 conda create -n ai python=3.12 -y
 ```
 
-### Step 2: Activate the Environment
+### Step 2: Activate Environment
 
 ```bash
 conda activate ai
@@ -122,23 +128,25 @@ conda activate ai
 
 ### Step 3: Install Required Packages
 
+Install all required dependencies using the provided `requirements.txt` file.
+
 ```bash
-pip install pandas matplotlib scikit-learn notebook ipykernel
+pip install -r requirements.txt
 ```
 
-### Step 4: Register the Environment as a Jupyter Kernel
+### Step 4: Register Jupyter Kernel
 
 ```bash
 python -m ipykernel install --user --name ai --display-name "Python (ai)"
 ```
 
-### Step 5: Open the Project in VS Code
+### Step 5: Open Project
 
 ```bash
 code .
 ```
 
-### Step 6: Open the Notebook
+### Step 6
 
 Open:
 
@@ -146,35 +154,33 @@ Open:
 fake_job_prediction_by_ml_model.ipynb
 ```
 
-### Step 7: Select the Jupyter Kernel
+### Step 7
 
-Click **Select Kernel** (top-right corner) and choose:
+Select the **Python (ai)** kernel.
 
-```text
-Python (ai)
-```
+### Step 8
 
-### Step 8: Run All Notebook Cells
+Run all notebook cells.
 
 ---
 
 ## Option 3: Python venv + VS Code + Jupyter Notebook
 
-### Step 1: Create a Virtual Environment
+### Step 1
 
 ```bash
 python -m venv .venv
 ```
 
-### Step 2: Activate the Environment
+### Step 2
 
-**Windows**
+Windows
 
 ```bash
 .venv\Scripts\activate
 ```
 
-**Linux/macOS**
+Linux/macOS
 
 ```bash
 source .venv/bin/activate
@@ -182,23 +188,25 @@ source .venv/bin/activate
 
 ### Step 3: Install Required Packages
 
+Install all required dependencies using the provided `requirements.txt` file.
+
 ```bash
-pip install pandas matplotlib scikit-learn notebook ipykernel
+pip install -r requirements.txt
 ```
 
-### Step 4: Register the Environment as a Jupyter Kernel
+### Step 4
 
 ```bash
 python -m ipykernel install --user --name .venv --display-name "Python (.venv)"
 ```
 
-### Step 5: Open the Project in VS Code
+### Step 5
 
 ```bash
 code .
 ```
 
-### Step 6: Open the Notebook
+### Step 6
 
 Open:
 
@@ -206,21 +214,99 @@ Open:
 fake_job_prediction_by_ml_model.ipynb
 ```
 
-### Step 7: Select the Jupyter Kernel
+### Step 7
 
-Click **Select Kernel** (top-right corner) and choose:
+Select the **Python (.venv)** kernel.
+
+### Step 8
+
+Run all notebook cells.
+
+---
+
+## 🌐 Streamlit Web Application
+
+A simple and interactive **Streamlit** web application was developed to demonstrate the trained Machine Learning model.
+
+### Features
+
+* Paste any job posting into the text area.
+* Predict whether the job posting is **Legitimate** or **Fraudulent**.
+* Real-time prediction using the trained **Linear SVM** model.
+* Clean and responsive user interface.
+* Input validation for empty and very short job descriptions.
+
+### Required Files
 
 ```text
-Python (.venv)
+app.py
+model.pkl
+tfidf.pkl
 ```
 
-### Step 8: Run All Notebook Cells
+### Install Streamlit
+
+```bash
+pip install streamlit
+```
+
+### Run the Application
+
+```bash
+streamlit run app.py
+```
+
+After running the command, Streamlit will automatically open the application in your default web browser.
+
+If it does not open automatically, visit:
+
+```text
+http://localhost:8501
+```
+
+---
+
+## 🖼️ Application Screenshots
+
+### Home Page
+
+<table align="center">
+<tr>
+<td align="center">
+<b>Dark Mode</b><br><br>
+<img src="images/homepage_dark_mode.png" width="430">
+</td>
+
+<td width="40"></td>
+
+<td align="center">
+<b>Light Mode</b><br><br>
+<img src="images/homepage_light_mode.png" width="430">
+</td>
+</tr>
+</table>
+
+---
+
+### Legitimate Job Prediction
+
+<p align="center">
+  <img src="images/legitimate.png" width="700">
+</p>
+
+---
+
+### Fraudulent Job Prediction
+
+<p align="center">
+  <img src="images/fraudulent.png" width="700">
+</p>
 
 ---
 
 ## 🔄 Workflow
 
-```
+```text
 Dataset
       │
       ▼
@@ -249,6 +335,12 @@ Hyperparameter Tuning
       │
       ▼
 Best Model Selection
+      │
+      ▼
+Save Model (Pickle)
+      │
+      ▼
+Streamlit Web Application
       │
       ▼
 Prediction System
@@ -281,9 +373,19 @@ Prediction System
 ```text
 Fake_Job_Posting_Detection/
 │
+├── images/
+│   ├── homepage_dark_mode.png
+│   ├── homepage_light_mode.png
+│   ├── legitimate.png
+│   └── fraudulent.png
+│
+├── app.py
+├── model.pkl
+├── tfidf.pkl
 ├── fake_job_prediction_by_ml_model.ipynb
 ├── fake_job_postings.csv
-└── README.md
+├── README.md
+└── requirements.txt
 ```
 
 ---
@@ -296,25 +398,28 @@ Fake_Job_Posting_Detection/
 | ---------------------------------------------- | ------------------ |
 | **Linear Support Vector Machine (Linear SVM)** | Highest F1 Score   |
 
-The project successfully predicts whether a job posting is **Legitimate** or **Fraudulent** using TF-IDF features.
+The **Linear SVM** achieved the highest F1 Score among all evaluated models and was selected as the final model.
+
+The trained model was deployed using **Streamlit**, enabling users to classify unseen job postings as **Legitimate** or **Fraudulent** through an interactive web interface.
 
 ---
 
 ## 🚀 Future Improvements
 
-The following features are planned for future updates:
+The following enhancements are planned for future releases:
 
-* 🌐 Develop a **Streamlit Web Application** for real-time fake job posting detection.
-* 📝 Allow users to paste job descriptions directly into the web application for instant prediction.
-* 📄 Add support for **PDF job posting analysis** in future releases.
-* 📈 Improve the user interface and overall user experience.
+* Add support for PDF job posting analysis.
+* Display prediction confidence scores.
+* Deploy the Streamlit application online.
+* Experiment with transformer-based NLP models such as BERT.
+* Improve the user interface and overall user experience.
 
 ---
 
 ## ⚠️ Limitations
 
-* Relies mainly on textual information.
-* Performance depends on dataset quality.
+* Relies primarily on textual information.
+* Performance depends on the quality of the dataset.
 * Fraud patterns may change over time.
 * Intended as a decision-support tool rather than a final decision-maker.
 
@@ -331,3 +436,5 @@ This project is intended for educational and learning purposes.
 **Sushant Kumar**
 
 B.Tech Computer Science & Engineering
+
+GitHub: **https://github.com/Sushantkr99**
