@@ -355,6 +355,7 @@ Prediction System
 * Linear Support Vector Machine (Linear SVM)
 * K-Nearest Neighbors (KNN)
 * Random Forest Classifier
+* Passive Aggressive Classifier
 
 ---
 
@@ -408,7 +409,6 @@ The trained model was deployed using **Streamlit**, enabling users to classify u
 
 The following enhancements are planned for future releases:
 
-* Add support for PDF job posting analysis.
 * Display prediction confidence scores.
 * Deploy the Streamlit application online.
 * Experiment with transformer-based NLP models such as BERT.
