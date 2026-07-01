@@ -77,6 +77,7 @@ The project includes data preprocessing, feature engineering, TF-IDF vectorizati
 * Scikit-learn
 * Streamlit
 * Pickle
+* Pdfplumber
 
 ---
 
