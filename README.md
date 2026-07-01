@@ -83,12 +83,9 @@ The project includes data preprocessing, feature engineering, TF-IDF vectorizati
 
 ## 🚀 Installation
 
-### Clone the Repository
+To get started with this project, choose one of the following methods depending on your use case.
 
-```bash
-git clone https://github.com/Sushantkr99/Fake_Job_Posting_Detection.git
-cd Fake_Job_Posting_Detection
-```
+> **Note:** The following three methods are **only for running the Jupyter Notebook** (`fake_job_prediction_by_ml_model.ipynb`) to train, evaluate, or experiment with the Machine Learning models.
 
 ---
 
@@ -97,7 +94,7 @@ cd Fake_Job_Posting_Detection
 1. Open **Google Colab**.
 2. Upload `fake_job_prediction_by_ml_model.ipynb`.
 3. Upload `fake_job_postings.csv` to the **Files** panel.
-4. If `pd.read_csv("fake_job_postings.csv")` doesn't work, right-click the uploaded CSV in the **Files** panel, select **Copy path**, and use that path in `pd.read_csv()`. For example:
+4. If `pd.read_csv("fake_job_postings.csv")` doesn't work, right-click the uploaded CSV, select **Copy path**, and use that path.
 
 ```python
 df = pd.read_csv("/content/fake_job_postings.csv")
@@ -115,127 +112,103 @@ df = pd.read_csv("/content/fake_job_postings.csv")
 
 ## Option 2: Conda + VS Code + Jupyter Notebook
 
-### Step 1: Create Environment
+### Step 1: Create a Conda Environment
 
 ```bash
 conda create -n ai python=3.12 -y
 ```
 
-### Step 2: Activate Environment
+### Step 2: Activate the Environment
 
 ```bash
 conda activate ai
 ```
 
-### Step 3: Install Required Packages
-
-Install all required dependencies using the provided `requirements.txt` file.
+### Step 3: Install the Required Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 4: Register Jupyter Kernel
+### Step 4: Register the Jupyter Kernel
 
 ```bash
 python -m ipykernel install --user --name ai --display-name "Python (ai)"
 ```
 
-### Step 5: Open Project
+### Step 5: Open the Project
 
 ```bash
 code .
 ```
 
-### Step 6
-
-Open:
+### Step 6: Open the Notebook
 
 ```text
 fake_job_prediction_by_ml_model.ipynb
 ```
 
-### Step 7
+### Step 7: Select the **Python (ai)** kernel.
 
-Select the **Python (ai)** kernel.
-
-### Step 8
-
-Run all notebook cells.
+### Step 8: Run all notebook cells.
 
 ---
 
 ## Option 3: Python venv + VS Code + Jupyter Notebook
 
-### Step 1
+### Step 1: Create a Virtual Environment
 
 ```bash
 python -m venv .venv
 ```
 
-### Step 2
+### Step 2: Activate the Environment
 
-Windows
+**Windows**
 
 ```bash
 .venv\Scripts\activate
 ```
 
-Linux/macOS
+**Linux/macOS**
 
 ```bash
 source .venv/bin/activate
 ```
 
-### Step 3: Install Required Packages
-
-Install all required dependencies using the provided `requirements.txt` file.
+### Step 3: Install the Required Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 4
+### Step 4: Register the Jupyter Kernel
 
 ```bash
 python -m ipykernel install --user --name .venv --display-name "Python (.venv)"
 ```
 
-### Step 5
+### Step 5: Open the Project
 
 ```bash
 code .
 ```
 
-### Step 6
-
-Open:
+### Step 6: Open the Notebook
 
 ```text
 fake_job_prediction_by_ml_model.ipynb
 ```
 
-### Step 7
+### Step 7: Select the **Python (.venv)** kernel.
 
-Select the **Python (.venv)** kernel.
-
-### Step 8
-
-Run all notebook cells.
+### Step 8: Run all notebook cells.
 
 ---
 
-## 🌐 Streamlit Web Application
+# 🌐 Streamlit Web Application
 
-A simple and interactive **Streamlit** web application was developed to demonstrate the trained Machine Learning model.
-
-### Features
-
-* Paste any job posting into the text area.
-* Predict whether the job posting is **Legitimate** or **Fraudulent**.
-* Real-time prediction using the trained **Linear SVM** model.
-* Clean and responsive user interface.
-* Input validation for empty and very short job descriptions.
+> **Note:** The above installation methods are intended for running the Jupyter Notebook. To launch the **Streamlit web application**, it is recommended to use a **virtual environment** such as **uv**, **Conda**, or **venv**.
 
 ### Required Files
 
@@ -243,15 +216,36 @@ A simple and interactive **Streamlit** web application was developed to demonstr
 app.py
 model.pkl
 tfidf.pkl
+requirements.txt
 ```
 
-### Install Streamlit
+### Step 1: Create a Virtual Environment
 
 ```bash
-pip install streamlit
+python -m venv .venv
 ```
 
-### Run the Application
+### Step 2: Activate the Virtual Environment
+
+**Windows**
+
+```bash
+.venv\Scripts\activate
+```
+
+**Linux/macOS**
+
+```bash
+source .venv/bin/activate
+```
+
+### Step 3: Install the Required Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Run the Streamlit Application
 
 ```bash
 streamlit run app.py
